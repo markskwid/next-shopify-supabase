@@ -3,14 +3,16 @@ import PageContainer from "../components/PageContainer";
 import Link from "next/link";
 import { headers } from "next/headers";
 
-export default async function CartPage() {
-  const headersList = headers();
-  const host = (await headersList).get("host");
-  const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
+export const dynamic = "force-dynamic";
 
-  const res = await fetch(`${protocol}://${host}/api/cart`, {
+export default async function CartPage() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cart`, {
     cache: "no-store",
   });
+
+  if (!res.ok) {
+    return <PageContainer>Failed to fetch cart</PageContainer>;
+  }
   const cartData = await res.json();
   return (
     <PageContainer>
