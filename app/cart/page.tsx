@@ -11,6 +11,8 @@ export default async function CartPage() {
   });
 
   if (!res.ok) {
+    console.log(res.status);
+    console.log(res);
     return <PageContainer>Failed to fetch cart</PageContainer>;
   }
   const cartData = await res.json();
