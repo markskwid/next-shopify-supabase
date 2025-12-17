@@ -1,11 +1,17 @@
 import CartList from "../components/CartList";
 import PageContainer from "../components/PageContainer";
 import Link from "next/link";
+import { headers } from "next/headers";
 
 export default async function CartPage() {
-  const res = await fetch("http://localhost:3000/api/cart");
-  const cartData = await res.json();
+  const headersList = headers();
+  const host = (await headersList).get("host");
+  const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
 
+  const res = await fetch(`${protocol}://${host}/api/cart`, {
+    cache: "no-store",
+  });
+  const cartData = await res.json();
   return (
     <PageContainer>
       <div className="flex flex-col mt-12">
