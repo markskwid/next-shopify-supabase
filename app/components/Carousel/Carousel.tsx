@@ -14,7 +14,7 @@ export default function HeroCarousel({ banners }: any) {
       <div className="embla overflow-hidden h-[500px]" ref={emblaRef}>
         <div className="embla__container h-full flex [&>div]:min-h-0 [&>div]:flex-none [&>div]:basis-full [&>div>img]:w-full [&>div>img]:h-full [&>div>img]:object-cover [&>div>img]:object-center">
           {banners.map((banner: any) => (
-            <div className="embla__slide h-full relative" id={banner.id}>
+            <div className="embla__slide h-full relative" id={banner.id} key={banner.id}>
               <img
                 src={banner.fields[3].reference?.image?.url}
                 alt={banner.fields[1].value}
