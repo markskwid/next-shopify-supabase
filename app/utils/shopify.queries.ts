@@ -38,3 +38,24 @@ export const getBanners = `{
     }
   }
 }`;
+
+export const getProductListCategory = `
+query GetCollectionByHandle($handle: String!, $first: Int!){
+  collection(handle: $handle){
+    title
+    id
+    products(first:$first){
+      edges{
+        node{
+          title
+          id
+          handle
+          vendor
+          featuredImage{
+            url
+          }
+        }
+      }
+    }
+  }
+}`;

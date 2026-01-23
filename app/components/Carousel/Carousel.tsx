@@ -5,7 +5,7 @@ export default function HeroCarousel({ banners }: any) {
   const [emblaRef] = useEmblaCarousel();
 
   return (
-    <section className="w-full p-0 mx-auto overflow-hidden">
+    <section className="w-full p-0 mb-10 mx-auto overflow-hidden">
       <div className="embla overflow-hidden h-[500px]" ref={emblaRef}>
         <div className="embla__container h-full flex [&>div]:min-h-0 [&>div]:flex-none [&>div]:basis-full [&>div>img]:w-full [&>div>img]:h-full [&>div>img]:object-cover [&>div>img]:object-center">
           {banners.map((banner: any) => (

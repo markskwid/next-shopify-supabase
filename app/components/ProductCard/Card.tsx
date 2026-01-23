@@ -15,7 +15,6 @@ export default function Card({ props }: { props: Card }) {
     <div
       className="z-10 rounded-md min-h-100 p-5 bg-white text-black text-center w-sm basis-[10%] md:basis-[49%] lg:basis-[24.5%] flex flex-col items-center"
       data-handle={props.handle}
-      data-card-id={props.id.split("/").pop()}
     >
       <a href="#">
         <h3 className="font-bold text-xl">{props.title}</h3>

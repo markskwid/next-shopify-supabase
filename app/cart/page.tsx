@@ -17,7 +17,7 @@ export default async function CartPage() {
   const cartData = await res.json();
   return (
     <PageContainer>
-      <div className="flex flex-col mt-12">
+      <div className="flex flex-col mt-20">
         <div className="flex justify-start items-center mb-5">
           <Link href="/" title="Go back home" className="mr-2">
             <svg

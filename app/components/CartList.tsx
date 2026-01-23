@@ -10,7 +10,7 @@ export default function CartList({ initialItems }: any) {
 
   const displayCart = cartItems.map((item) => {
     const product = initialItems.find(
-      (p: any) => p.id === `gid://shopify/Product/${item.id}`
+      (p: any) => p.id === `gid://shopify/Product/${item.id}`,
     );
     return { ...item, ...product };
   });
@@ -26,6 +26,25 @@ export default function CartList({ initialItems }: any) {
       timeOutRef.current = setTimeout(() => {
         saveValue(index, id);
       }, 2000);
+    }
+  };
+
+  const decrement = (index: number, id: string) => {
+    if (ref.current[index]) {
+      const input = ref.current[index];
+      const currentValue = Number(input.value) || 0;
+      input.value = (currentValue - 1).toString();
+      const newValue = currentValue - 1;
+
+      if (newValue === 0) {
+        deleteItem(id);
+      } else {
+        if (timeOutRef.current) clearTimeout(timeOutRef.current);
+
+        timeOutRef.current = setTimeout(() => {
+          saveValue(index, id);
+        }, 2000);
+      }
     }
   };
 
@@ -91,6 +110,7 @@ export default function CartList({ initialItems }: any) {
                   <td className="border border-gray-50 text-center">
                     <div className="flex justify-center items-center w-1/2 mx-auto gap-2 [&_button]:cursor-pointer">
                       <button
+                        onClick={() => decrement(index, item.id)}
                         type="button"
                         className="bg-white round-md px-2 py-0 min-w-8 text-black font-bold rounded-md"
                       >
