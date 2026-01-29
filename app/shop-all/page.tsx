@@ -1,5 +1,6 @@
 import PageContainer from "../components/PageContainer";
 import ProductList from "../components/ProductList";
+import Notification from "../components/Notification";
 
 export default function ShopAll() {
   return (
@@ -7,6 +8,7 @@ export default function ShopAll() {
       <div className="mt-10">
         <ProductList />
       </div>
+      <Notification />
     </PageContainer>
   );
 }
